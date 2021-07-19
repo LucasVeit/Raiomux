@@ -4,17 +4,17 @@
 using namespace std;
 
 
-int rot_n(int letter, int key, int value, int choice){
+int rot(int letter, int key, int value){
     int rotted;
-    rotted = ((letter - value + key + (24 * choice)) % 26 ) + value;
+    rotted = ((letter - value + key) % 26 ) + value; // descriptografar -> 26 - quantidade que vai
     return rotted;
 }
 
-int caesar(int letter, int key, int choice){
+int caesar(int letter, int key){
     if(letter > 64 && letter < 91)
-        return rot_n(letter, key, 65, choice);
+        return rot(letter, key, 65);
     else if(letter > 96 && letter < 123)
-        return rot_n(letter, key, 97, choice);
+        return rot(letter, key, 97);
     return letter;
 }
 
@@ -27,8 +27,7 @@ int main(){
     cin >> choice;
     --choice;
 
-    cin.clear();
-    fflush(stdin);
+    getchar();
 
     cout << "Insert the original text:" << endl;
     getline(cin, plainText);
@@ -37,7 +36,7 @@ int main(){
     cin >> key;
 
     for(int i = 0; i < plainText.size(); ++i){
-        cipherText += caesar(plainText[i], key, choice);
+        cipherText += caesar(plainText[i], key);
     }
     
     cout << cipherText << endl;

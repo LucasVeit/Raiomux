@@ -1,0 +1,7 @@
+/*
+escolhe linha x coluna da matriz
+escolhe a ordem das colunas
+printa a leitura coluna por coluna
+
+
+*/
